@@ -1,0 +1,23 @@
+POST http://localhost:3200/addresses
+Content-Type: application/json
+
+{
+    "name":"Ritu",
+    "addressType":"Home",
+    "street":"B378",
+    "locality":"Prem Vihar",
+    "state":"Delhi",
+    "pincode":201309,
+    "phoneNumber":9911706610
+}
+
+###
+GET  http://localhost:3200/addresses/63ad50fe5806b463b0d39c0e
+
+###
+PATCH  http://localhost:3200/addresses/63ad50fe5806b463b0d39c0e
+Content-Type: application/json
+
+{
+    "state":"Andhra Pradesh"
+}

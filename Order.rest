@@ -1,0 +1,112 @@
+POST http://localhost:3200/orders
+Content-Type: application/json
+
+{
+    "orderedBy":"Dragniiio",
+    "address":"63ac33923bce74de64b5567f",
+    "paymentDetails":{
+        "paymentMethod":"Debit Card",
+        "paymentTotal":4200
+    },
+    "products":[
+        {"productId": "63abdab17abc2bfb549106c0"},
+        {
+            "productId":"63abdab17abc2bfb549106bf","quantity":3,
+            "discountPercent":35
+        }
+    ],
+    "orderedProducts":[]
+}
+###
+GET http://localhost:3200/orders/63ad32a73dec18d6dd8d4b48
+
+###
+PATCH http://localhost:3200/orders/63ad32a73dec18d6dd8d4b48
+Content-Type: application/json
+
+{
+    "paymentDetails":{
+        "paymentTotal":56000,
+        "paymentMethod":"Debit Carddfsdf"
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

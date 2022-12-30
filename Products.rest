@@ -1,0 +1,34 @@
+# Sending request to fetch all products
+GET http://localhost:3200/products
+
+###
+
+# Sending request to get Particular Product
+GET http://localhost:3200/products/63ac1344502b2f0eb3bce3d8
+
+###
+
+# Sending Request to Add a product
+POST http://localhost:3200/products
+Content-Type: application/json
+
+{
+    
+}
+
+###
+
+# Sending Request to Delete a product
+DELETE http://localhost:3200/products/63ac1344502b2f0eb3bce3d8
+
+
+
+###
+
+# Sending Request to Update a product
+PATCH http://localhost:3200/products/63abdab17abc2bfb549106be
+Content-Type: application/json
+
+{
+    "title":"samsung 154 pro max"
+}
