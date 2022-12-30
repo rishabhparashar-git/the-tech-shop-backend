@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "name":"rishabh parashar",
-    "username":"thetokyoghoul",
+    "username":"theGangooWarGod",
     "password":"rishabh@123",
     "repeatPassword":"rishabh@123"
 }
@@ -16,6 +16,6 @@ POST http://localhost:3200/user/login
 Content-Type: application/json
 
 {
-    "username":"theDemonKing",
+    "username":"theGangooWarGod",
     "password":"rishabh@123"
 }

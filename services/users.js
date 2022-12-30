@@ -1,3 +1,4 @@
+const { passwordEncryptor, passwordValidator } = require("../helpers/users");
 const User = require("../models/user");
 const {
   userRegistrationValidator,
@@ -6,6 +7,7 @@ const {
 
 exports.register = async (req, res) => {
   console.log("Registering right now");
+  console.log(res.password);
   const { role, repeatPassword, ...userInfo } = req.body;
   try {
     const { error } = userRegistrationValidator.validate({
@@ -25,6 +27,7 @@ exports.register = async (req, res) => {
   }
   console.log(role, repeatPassword, userInfo);
   try {
+    userInfo.password = await passwordEncryptor(userInfo.password);
     const user = new User({ ...userInfo, role: role || "User" });
     console.log(user);
     const newUser = await user.save();
@@ -55,7 +58,11 @@ exports.login = async (req, res) => {
     res.status(404).json({ message: "User Info Not Found", details: err });
   });
   if (foundUser) {
-    if (foundUser.password === credentials.password) {
+    const userValidated = await passwordValidator(
+      credentials.password,
+      foundUser.password
+    );
+    if (userValidated) {
       res.status(200).json({
         message: "User Found Successfully",
         userData: { name: foundUser.name, role: foundUser.userName },
