@@ -1,0 +1,21 @@
+# Registration POST Request
+POST http://localhost:3200/user/register
+Content-Type: application/json
+
+{
+    "name":"rishabh parashar",
+    "username":"thetokyoghoul",
+    "password":"rishabh@123",
+    "repeatPassword":"rishabh@123"
+}
+
+###
+
+# Login POST Request
+POST http://localhost:3200/user/login
+Content-Type: application/json
+
+{
+    "username":"theDemonKing",
+    "password":"rishabh@123"
+}

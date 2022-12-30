@@ -9,6 +9,7 @@ db.on("error", (error) => console.log(error));
 db.on("open", () => console.log("ConnectedToDatabase"));
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 const productsRouter = require("./routes/products");
 app.use("/products", productsRouter);
@@ -25,5 +26,8 @@ app.use(
 
 const addressesRouter = require("./routes/addresses");
 app.use("/addresses", addressesRouter);
+
+const userRouter = require("./routes/users");
+app.use("/user", userRouter);
 
 app.listen(3200, () => console.log("The-Tech_Shop Server Started"));
