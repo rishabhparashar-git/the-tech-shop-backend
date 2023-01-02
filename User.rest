@@ -9,6 +9,7 @@ Content-Type: application/json
     "repeatPassword":"rishabh@123"
 }
 
+
 ###
 
 # Login POST Request
@@ -19,3 +20,13 @@ Content-Type: application/json
     "username":"theGangooWarGod",
     "password":"rishabh@123"
 }
+###
+POST http://localhost:3200/user/jwtAuth
+Content-Type: application/json
+
+{
+    "username":"theGangooWarGod",
+    "password":"rishabh@123"
+}
+###
+GET http://localhost:3200/user/jwtValidate/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoiTW9uIEphbiAwMiAyMDIzIDExOjQ4OjEzIEdNVCswNTMwIChJbmRpYSBTdGFuZGFyZCBUaW1lKSIsImlhdCI6MTY3MjY0MDI5M30.cWO56fIhx3iiojaJDP3tIJ2JD3V0jabhVMAeXetgFmI
