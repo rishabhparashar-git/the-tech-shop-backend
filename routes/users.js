@@ -7,6 +7,6 @@ router.post("/register", register);
 router.post("/login", login);
 
 router.post("/jwtAuth", jwtAuth);
-router.get("/jwtValidate/:token", jwtValidate);
+router.get("/jwtValidate", jwtValidate);
 
 module.exports = router;

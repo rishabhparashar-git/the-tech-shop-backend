@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
-let tokenHeaderKey = process.env.TOKEN_HEADER_KEY;
-let jwtSecretKey = process.env.JWT_SECRET_KEY;
+let TOKEN_HEADER_KEY = process.env.TOKEN_HEADER_KEY;
+let JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
+let JWT_EXPIRY = process.env.JWT_EXPIRY;
 const { passwordEncryptor, passwordValidator } = require("../helpers/users");
 const User = require("../models/user");
 const {
@@ -112,15 +113,14 @@ exports.jwtAuth = async (req, res) => {
     );
     if (userValidated) {
       let data = {
-        time: Date(),
-        userName: foundUser.userName,
+        username: foundUser.username,
       };
-
-      const token = jwt.sign(data, jwtSecretKey);
+      console.log(JWT_EXPIRY);
+      const token = jwt.sign(data, JWT_SECRET_KEY, { expiresIn: JWT_EXPIRY });
 
       res.status(200).json({
         message: "User Found Successfully",
-        userData: { name: foundUser.name, role: foundUser.userName, token },
+        token,
       });
     } else {
       res.status(403).json({
@@ -136,16 +136,22 @@ exports.jwtAuth = async (req, res) => {
 exports.jwtValidate = (req, res) => {
   // Tokens are generally passed in the header of the request
   // Due to security reasons.
-  console.log(req.params);
-  const token = req.params.token;
 
-  console.log(token);
+  const token = req.headers.authorization;
 
   try {
-    // const token = req.header(tokenHeaderKey);
-    const verified = jwt.verify(token, jwtSecretKey);
+    const verified = jwt.verify(token, JWT_SECRET_KEY); // returns iat(issued at) and exp(expiry) in sec to get date obj convert into ms
+    // .catch((err) => {
+    //   console.log("=================inside error block=====================");
+    //   return res
+    //     .status(403)
+    //     .json({ message: "User not Validated", error: err });
+    // });
     if (verified) {
-      return res.send("Successfully Verified");
+      return res.json({
+        message: "Successfully Verified",
+        dataReturned: verified,
+      });
     } else {
       // Access Denied
       return res.status(401).send(error);

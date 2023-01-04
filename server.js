@@ -30,4 +30,6 @@ app.use("/addresses", addressesRouter);
 const userRouter = require("./routes/users");
 app.use("/user", userRouter);
 
-app.listen(3200, () => console.log("The-Tech_Shop Server Started"));
+app.listen(3200, () =>
+  console.log("The-Tech_Shop Server Started on port 3200")
+);
